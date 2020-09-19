@@ -11,15 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_genre") //para dar o nome dessa tabela no BD
 public class Genre implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
 	
 	@OneToMany(mappedBy = "genre")
 	private List<Game> games = new ArrayList<>(); //associação de 1 para muitos. muitos games para um genero

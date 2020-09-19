@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.devsuperior.dspesquisa.entities.enums.Platform;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "tb_game") //para dar o nome dessa tabela no BD
@@ -26,10 +28,12 @@ public class Game implements Serializable {
 	private String title;
 	private Platform platform;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
 	private Genre genre; //Associação de muitos para 1, muitos games 1 gênero.
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "game")
 	private List<Record> records = new ArrayList<>();
 	
