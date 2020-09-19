@@ -24,23 +24,23 @@ public class Game implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private Platform plataform;
+	private Platform platform;
 	
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
 	private Genre genre; //Associação de muitos para 1, muitos games 1 gênero.
 	
 	@OneToMany(mappedBy = "game")
-	private List<Record> record = new ArrayList<>();
+	private List<Record> records = new ArrayList<>();
 	
 	public Game() {
 	}
 
-	public Game(Long id, String title, Platform plataform, Genre genre) {
+	public Game(Long id, String title, Platform platform, Genre genre) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.plataform = plataform;
+		this.platform = platform;
 		this.genre = genre;
 	}
 
@@ -60,12 +60,12 @@ public class Game implements Serializable {
 		this.title = title;
 	}
 
-	public Platform getPlataform() {
-		return plataform;
+	public Platform getPlatform() {
+		return platform;
 	}
 
-	public void setPlataform(Platform plataform) {
-		this.plataform = plataform;
+	public void setPlataform(Platform platform) {
+		this.platform = platform;
 	}
 
 	public Genre getGenre() {
@@ -77,7 +77,7 @@ public class Game implements Serializable {
 	}
 	
 	public List<Record> getRecord() {
-		return record;
+		return records;
 	}
 
 	@Override
